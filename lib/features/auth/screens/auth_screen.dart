@@ -1,6 +1,7 @@
 import 'package:amazon_clone/comman/widgets/custom_button.dart';
 import 'package:amazon_clone/comman/widgets/custom_textFiel.dart';
 import 'package:amazon_clone/constants/global_variable.dart';
+import 'package:amazon_clone/features/auth/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 enum Auth {
@@ -21,9 +22,36 @@ class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signUp;
   final signUpFormKey = GlobalKey<FormState>();
   final signInFormKey = GlobalKey<FormState>();
+  final AuthService authService = AuthService();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
+  void signUpUser() {
+    authService.signUpUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+      name: _nameController.text,
+    );
+  }
+
+  void signInUser() {
+    authService.signInUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,14 +111,19 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         CustomButton(
                           text: "Sign Up",
-                          onTap: () {},
+                          onTap: () {
+                            if (signUpFormKey.currentState!.validate()) {
+                              signUpUser();
+                            }
+                          },
                         )
                       ],
                     ),
                   ),
                 ),
               ListTile(
-                tileColor: _auth == Auth.signIn ? GlobalVariables.backgroundColor:GlobalVariables.greyBackgroundCOlor,
+                tileColor: _auth == Auth.signIn ? GlobalVariables
+                    .backgroundColor : GlobalVariables.greyBackgroundCOlor,
                 title: Text(
                   "Sign-In",
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -125,7 +158,11 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         CustomButton(
                           text: "Sign In",
-                          onTap: () {},
+                          onTap: () {
+                            if(signInFormKey.currentState!.validate()){
+                              signInUser();
+                            }
+                          },
                         )
                       ],
                     ),
