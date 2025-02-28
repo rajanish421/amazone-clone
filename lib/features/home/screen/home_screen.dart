@@ -3,7 +3,7 @@ import 'package:amazon_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/user.dart';
+import '../../../models/user.dart';
 import '../widgets/address_box.dart';
 import '../widgets/carousel_images.dart';
 import '../widgets/deal_of_day.dart';
