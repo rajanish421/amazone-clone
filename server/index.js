@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
  
 // imprort from other files
 const authRoute = require('./routes/auth');  
+const adminRouter = require("./routes/admin");
+const admin = require("./middlewares/admin");
 
 // Initialization
 const app = express();
@@ -13,6 +15,7 @@ const PORT = 3000;
 // middleware
 app.use(express.json());
 app.use(authRoute);
+app.use(adminRouter);
 
 // Connections
 mongoose.connect('mongodb://0.0.0.0/').then(()=>{
@@ -26,3 +29,4 @@ mongoose.connect('mongodb://0.0.0.0/').then(()=>{
 app.listen(PORT,()=>{
     console.log(`Listen at port ${PORT}`);
 });
+
