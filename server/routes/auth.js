@@ -42,6 +42,7 @@ const auth = require("../middlewares/auth");
 
          // any error
       }catch(e){
+         console.log("error from auth js");
          res.status(500).json({ error : e.message } );
       }
   });

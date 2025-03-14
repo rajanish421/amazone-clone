@@ -30,6 +30,7 @@ class AuthService {
         address: '',
         type: '',
         token: '',
+        cart: [],
       );
       http.Response res = await http.post(Uri.parse("$uri/api/signup"),
           body: user.toJson(),
@@ -40,11 +41,11 @@ class AuthService {
         response: res,
         context: context,
         onSuccess: () {
-          showSnackBar(context, "Account Created !");
+          // showSnackBar(context, "Account Created !");
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+       showSnackBar(context, e.toString());
     }
   }
 
@@ -74,6 +75,8 @@ class AuthService {
         },
       );
     } catch (e) {
+      print("problem from sign in");
+      print(e.toString());
       showSnackBar(context, e.toString());
     }
   }
@@ -112,7 +115,8 @@ class AuthService {
         userProvider.setUser(userRes.body);
       }
     } catch (e) {
-      showSnackBar(context, e.toString());
+      print("problem from sign out");
+       showSnackBar(context, e.toString());
     }
   }
 }
