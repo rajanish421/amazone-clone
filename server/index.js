@@ -26,7 +26,7 @@ app.use(userRouter);
 app.use(cors());
 
 // Connections
-mongoose.connect(DB).then(()=>{
+mongoose.connect('mongodb://0.0.0.0/').then(()=>{
     console.log("Connection Successfully");
 }).catch((e)=>{
     console.log(e);
