@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-String uri = 'http://10.0.2.2:3000';  // for emulator
-//  String uri = 'http://192.168.1.70:3000';  // for real mobile
+String uri = "localhost";
 class GlobalVariables {
   // COLORS
   static const appBarGradient = LinearGradient(
