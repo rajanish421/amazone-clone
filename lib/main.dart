@@ -8,7 +8,6 @@ import 'package:amazon_clone/router.dart';
 import 'package:amazon_clone/constants/global_variable.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'comman/widgets/bottom_bar.dart';
 
 void main() {
