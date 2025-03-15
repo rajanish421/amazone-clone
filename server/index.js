@@ -14,6 +14,7 @@ const userRouter = require("./routes/user");
 // Initialization
 const app = express();
 const PORT = process.env.PORT || 3000;
+const DB = "mongodb+srv://rajanishsingh729:Rajanish@1234@cluster0.l2i5z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
  
 
 // middleware
@@ -25,7 +26,7 @@ app.use(userRouter);
 app.use(cors());
 
 // Connections
-mongoose.connect('mongodb://0.0.0.0/').then(()=>{
+mongoose.connect(DB).then(()=>{
     console.log("Connection Successfully");
 }).catch((e)=>{
     console.log(e);
