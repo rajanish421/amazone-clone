@@ -2,6 +2,8 @@ import 'package:amazon_clone/features/admin/screens/posts_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/global_variable.dart';
+import 'analytics_screen.dart';
+import 'orders_screen.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
@@ -16,13 +18,9 @@ class _AdminScreenState extends State<AdminScreen> {
   double bottomBarBorderSideWidth = 5;
 
   List<Widget> pages = [
-   const PostsScreen(),
-    const Center(
-      child: Text("Analytics"),
-    ),
-    const Center(
-      child: Text("Cart Page"),
-    ),
+    const PostsScreen(),
+    const AnalyticsScreen(),
+    const OrdersScreen(),
   ];
 
   void onTapped(int page) {
@@ -30,6 +28,7 @@ class _AdminScreenState extends State<AdminScreen> {
       _page = page;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
