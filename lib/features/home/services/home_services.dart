@@ -39,7 +39,6 @@ class HomeServices {
         },
       );
     } catch (e) {
-      print('hello');
       showSnackBar(context, e.toString());
     }
     return productList;
@@ -63,12 +62,13 @@ class HomeServices {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
-
       httpErrorHandle(
         response: res,
         context: context,
         onSuccess: () {
-          product = Product.fromJson(res.body);
+          if(res.body.isNotEmpty){
+            product = Product.fromJson(res.body);
+          }
         },
       );
     } catch (e) {

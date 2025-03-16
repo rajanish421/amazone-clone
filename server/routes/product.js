@@ -84,6 +84,7 @@ productRouter.post('/api/rate-product',auth,async(req,res)=>{
             });
 
             res.json(products[0]);
+            console.log(products[0]);
         }catch(e){
             console.log('error from here');
             res.status(500).json({error:e.message});
